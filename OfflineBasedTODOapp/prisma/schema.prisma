@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Todo {
+  id        String    @id @default(uuid())
+  title     String
+  content   String?
+  status    String    @default("pending")
+  version   Int       @default(1)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([deletedAt])
+}
+
+model Note {
+  id        String    @id @default(uuid())
+  title     String
+  content   String?
+  version   Int       @default(1)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([deletedAt])
+}
+
+model Conflict {
+  id            String    @id @default(uuid())
+  operationId   String    @unique
+  tableName     String
+  recordId      String
+  serverData    Json
+  clientData    Json
+  serverVersion Int
+  clientVersion Int
+  status        String    @default("PENDING")
+  resolvedAt    DateTime?
+  resolvedData  Json?
+  createdAt     DateTime  @default(now())
+
+  @@index([status])
+  @@index([tableName, recordId])
+}
+
+model ProcessedOperation {
+  id          String   @id @default(uuid())
+  operationId String   @unique
+  action      String
+  tableName   String
+  processedAt DateTime @default(now())
+
+  @@index([processedAt])
+}

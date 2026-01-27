@@ -1,0 +1,45 @@
+# Node
+node_modules/
+
+# pnpm
+.pnp.cjs
+.pnp.js
+.pnpm-debug.log
+
+# Build output
+dist/
+build/
+
+# Vite
+/.vite
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Env
+.env
+.env.local
+
+# Prisma generated client
+OfflineBasedTODOapp/src/generated/
+
+# Frontend specific
+frontend/node_modules/
+frontend/dist/
+
+# Backend specific
+OfflineBasedTODOapp/node_modules/
+OfflineBasedTODOapp/dist/
+
+# Misc
+coverage/
+.tmp/
