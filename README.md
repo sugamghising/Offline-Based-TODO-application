@@ -89,10 +89,6 @@ cd OfflineBasedTODOapp
 npx prisma studio
 ```
 
-Want more?
-
-- I can add step-by-step scripts to automatically simulate offline scenarios, add Playwright/Cypress E2E tests for offline behavior, or create a small debugging UI to inspect the outbox and processed operations. Tell me which you'd prefer.
-
 ---
 
 _This README is intentionally focused on testing and learning the offline sync system._
